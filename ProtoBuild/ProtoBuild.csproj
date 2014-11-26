@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E60E74E-201F-4F10-BEBB-60AE83192F44}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProtoBuild</RootNamespace>
+    <AssemblyName>ProtoBuild</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastSerialize, Version=1.0.0.0, Culture=neutral, PublicKeyToken=abc7035e0ebf3a30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\FastSerialize\FastSerialize\bin\Release4.0\FastSerialize.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assembly\Generator.cs" />
+    <EmbeddedResource Include="Assembly\Installer.cs" />
+    <Compile Include="Designer\Designer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Designer.Designer.cs">
+      <DependentUpon>Designer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\DesignerBase.cs" />
+    <Compile Include="Designer\DesignHost\GenericHostLoader.cs" />
+    <Compile Include="Designer\DesignHost\HostPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Designer\DesignHost\HostPane.Designer.cs">
+      <DependentUpon>HostPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\DesignHost\HostSurface.cs" />
+    <Compile Include="Designer\DesignHost\HostSurfaceManager.cs" />
+    <Compile Include="Designer\DesignHost\NameCreationService.cs" />
+    <Compile Include="Designer\Tools\ToolBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Designer\Tools\ToolBox.Designer.cs">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Tools\Tool.cs" />
+    <Compile Include="Designer\Tools\ToolCategory.cs" />
+    <Compile Include="Designer\Tools\Tools.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtoBuild.cs" />
+    <Compile Include="RunContext.cs" />
+    <Compile Include="Types\RegistryHelper.cs" />
+    <Compile Include="Types\TypeHelper.cs" />
+    <Compile Include="XBDMarkup\Attributes\Attributes.cs" />
+    <Compile Include="XBDMarkup\Elements\CopyFile.cs" />
+    <Compile Include="XBDMarkup\Elements\ExecuteProcess.cs" />
+    <Compile Include="XBDMarkup\Elements\ExecuteTask.cs" />
+    <Compile Include="XBDMarkup\Elements\ExecutionPlan.cs" />
+    <Compile Include="XBDMarkup\Elements\Include.cs" />
+    <Compile Include="XBDMarkup\Elements\Interfaces\IDatagram.cs" />
+    <Compile Include="XBDMarkup\Elements\Interfaces\IValueProvider.cs" />
+    <Compile Include="XBDMarkup\Elements\Interfaces\IXBDParentElement.cs" />
+    <Compile Include="XBDMarkup\Elements\Interfaces\IRequirement.cs" />
+    <Compile Include="XBDMarkup\Elements\CreateRegistryKey.cs" />
+    <Compile Include="XBDMarkup\Elements\RegistryLookup.cs" />
+    <Compile Include="XBDMarkup\Elements\RemoveFile.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\FileRequirement.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\OSRequirement.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\ProcessRequirement.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\RegistryRequirement.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\Requirement.cs" />
+    <Compile Include="XBDMarkup\Elements\Requirements\RequirementSet.cs" />
+    <Compile Include="XBDMarkup\Elements\Task.cs" />
+    <Compile Include="XBDMarkup\Elements\VariableDefinition.cs" />
+    <Compile Include="XBDMarkup\Elements\XBDElement.cs" />
+    <Compile Include="XBDMarkup\Errors\DirectoryNotFoundWarning.cs" />
+    <Compile Include="XBDMarkup\Errors\ErrorBase.cs" />
+    <Compile Include="XBDMarkup\Errors\FileNotFoundError.cs" />
+    <Compile Include="XBDMarkup\Errors\NoSuchVariableError.cs" />
+    <Compile Include="XBDMarkup\Errors\ParseError.cs" />
+    <Compile Include="XBDMarkup\Errors\RequirementError.cs" />
+    <Compile Include="XBDMarkup\Extensions\ElementExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XBDMarkup\Elements\MSBuild.cs" />
+    <Compile Include="XBDMarkup\Extensions\StreamExtensions.cs" />
+    <Compile Include="XBDMarkup\IVariableReplacer.cs" />
+    <Compile Include="XBDMarkup\XBDDef.cs" />
+    <EmbeddedResource Include="Designer\Designer.resx">
+      <DependentUpon>Designer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Tools\ToolBox.resx">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assembly\manifest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
